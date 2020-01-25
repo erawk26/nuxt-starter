@@ -8,4 +8,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+$color: red;
+.test {
+  color: $color;
+}
+</style>
