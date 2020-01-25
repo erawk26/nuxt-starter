@@ -5,5 +5,9 @@ export const company = {
   state: 'NY',
   zip: '12121',
   email: 'xxx@email.com',
-  phone: '555-555-5555'
+  phone: '555-555-5555',
+  twitter: 'somecompany', // leave out the @ symbol
+  instagram: 'somecompany',
+  linkedin: 'somecompany',
+  facebook: 'somecompany'
 }
