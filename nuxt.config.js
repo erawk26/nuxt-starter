@@ -25,7 +25,7 @@ export default {
   },
   loading: { color: '#fff' },
   css: [],
-  plugins: ['~/plugins/globalMethods.js'],
+  plugins: ['@/plugins/globalMethods.js', '@/plugins/updateClient.js'],
   vuetify: {
     customVariables: ['~/assets/scss/_variables.scss'],
     optionsPath: '~/vuetify.options.js'

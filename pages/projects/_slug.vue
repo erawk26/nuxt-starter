@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1>{{ page.title }}</h1>
-    <p>{{ page.description }}</p>
-    <nuxt-content :document="page" />
+    <h1>{{ project.title }}</h1>
+    <nuxt-content :document="project" />
+    <div v-for="item in projects" :key="item.slug">
+      <nuxt-link :to="'/projects/' + item.slug">{{ item.title }}</nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -10,14 +12,16 @@
 export default {
   async asyncData({ $content, params, error }) {
     const slug = params.slug || 'index'
-    const page = await $content('projects', slug)
+    const project = await $content('projects', slug)
       .fetch()
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.log({ err, statusCode: 404, message: 'Page not found' })
       })
-    const pages = await $content('projects')
+    const projects = await $content('projects')
       // .only(['path'])
+      .where({ slug: { $ne: 'index' } })
+      .sortBy('title')
       .fetch()
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -25,8 +29,8 @@ export default {
       })
 
     return {
-      page,
-      pages
+      project,
+      projects
     }
   }
 }

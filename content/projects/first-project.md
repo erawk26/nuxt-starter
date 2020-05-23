@@ -7,6 +7,6 @@ description: This is my first project
 
 You can edit me in <code>content/about.md</code>
 
-See also the [Home](/) page!
+See also the [Projects List](/projects) page!
 
 [📖 Documentation](https://content.nuxtjs.org)
