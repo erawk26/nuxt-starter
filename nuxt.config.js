@@ -39,7 +39,20 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources'
   ],
-  modules: [],
+  modules: ['@nuxt/content'],
+  content: {
+    // Options
+  },
+  generate: {
+    async routes() {
+      const { $content } = require('@nuxt/content')
+      const files = await $content()
+        .only(['path'])
+        .fetch()
+
+      return files.map((file) => (file.path === '/index' ? '/' : file.path))
+    }
+  },
   build: {
     extend(config, ctx) {}
   }

@@ -12,6 +12,18 @@ export default {
   watch: {
     isMini() {}
   },
+  async asyncData({ $content, params, error }) {
+    const menus = await $content()
+      .only(['path'])
+      .fetch()
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log({ err, statusCode: 404, message: 'Page not found' })
+      })
+    return {
+      menus
+    }
+  },
   mounted() {
     this.loading = false
   },

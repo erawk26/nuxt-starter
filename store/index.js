@@ -30,6 +30,11 @@ export const state = () => ({
         to: '/about'
       },
       {
+        external: false,
+        title: 'Projects',
+        to: '/projects'
+      },
+      {
         external: true,
         icon: 'mdi-file-pdf',
         title: 'Resume',
