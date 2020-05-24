@@ -3,10 +3,12 @@ export default function({ store }) {
   // Only in development
   if (process.dev) {
     window.onNuxtReady(($nuxt) => {
+      console.log($nuxt)
       $nuxt.$on('content:update', ({ event, path }) => {
         // Refresh the store categories
+
         console.log(event, store, path)
-        // store.dispatch('SET_STATE',store.menus,)
+        // store.dispatch('SET_STATE',store.menus)
       })
     })
   }

@@ -1,14 +1,10 @@
 ---
 title: Home
 description: This is my homepage
+headshot: https://via.placeholder.com/1024x1024.png?text=Square+Image
 path: /
-slug: "index"
 ---
 
-## Welcome!
-
-You can edit me in <code>content/index.md</code>
-
-See also the [about](/about) page!
-
-[📖 Documentation](https://content.nuxtjs.org)
+#### Erik Olsen
+###### Web Developer / Programmer
+Hey there, Lets build things together! My passion is creating fast responsive websites and applications. I'm currently based out of Sarasota, FL and Aiken, SC. 

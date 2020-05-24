@@ -20,7 +20,7 @@ Vue.mixin({
         if (callNow) func.apply(context, args)
       }
     },
-    machine_readable: (val) =>
+    kebab: (val) =>
       val
         .toLowerCase()
         .replace(/[^\w ]+/g, '')

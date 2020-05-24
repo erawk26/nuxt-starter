@@ -50,7 +50,7 @@ export const state = () => ({
       },
       {
         external: true,
-        icon: 'mdi-linkedin-box',
+        icon: 'mdi-linkedin',
         href: `https://www.linkedin.com/in/${company.linkedin}`,
         title: 'LinkedIn'
       },
