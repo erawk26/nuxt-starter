@@ -3,19 +3,25 @@
     v-breadcrumbs.pl-0(:items='crumbs')
       template(v-slot:divider='')
         v-icon mdi-chevron-right
-    project-full(:projects='projects' :project='project')
-      template(slot="body")
-        nuxt-content(:document="project")
-    .text-center
-      v-pagination(@input="paginationChange" v-model='projectNum' total-visible="5" :length='projects.length' circle)  
+    div(v-if="$route.path!=='/projects'")
+      project-full(:projects='projects' :project='project')
+        template(slot="body")
+          nuxt-content(:document="project")
+      .text-center
+        v-pagination(@input="paginationChange" v-model='projectNum' total-visible="5" :length='projects.length' circle)
+    v-container.cards(v-else grid-list-lg='')
+      v-layout.row.wrap
+        v-flex.li(v-for='project in projects' :key='project.slug' xs12='' sm6='' lg4='')
+          v-hover
+            template(v-slot='{ hover }')
+              project-teaser(:key="project.slug" :hover='hover' :project="project" xs12='' sm6='' lg4='')
 </template>
 
 <script>
+import ProjectTeaser from '@/components/ProjectTeaser'
 import ProjectFull from '@/components/ProjectFull'
 export default {
-  components: {
-    ProjectFull
-  },
+  components: { ProjectTeaser, ProjectFull },
   computed: {},
   async asyncData({ $content, params, error }) {
     const slug = params.slug || 'index'
