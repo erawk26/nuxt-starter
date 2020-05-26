@@ -23,7 +23,7 @@ export default {
       }
     ]
   },
-  loading: { color: '#fff' },
+  loading: '~/components/loading.vue',
   css: [],
   plugins: ['@/plugins/globalMethods.js', '@/plugins/updateClient.js'],
   vuetify: {
@@ -39,6 +39,10 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources'
   ],
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
+  },
   modules: ['@nuxt/content'],
   content: {
     // Options
