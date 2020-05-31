@@ -25,19 +25,24 @@ export default {
   },
   loading: { color: '#fff' },
   css: [],
-  plugins: ['@/plugins/globalMethods.js', '@/plugins/updateClient.js'],
+  plugins: [
+    { src: '~/plugins/starRating.js', mode: 'client' },
+    '~/plugins/globalMethods.js',
+    '~/plugins/updateClient.js'
+  ],
   vuetify: {
-    customVariables: ['~/assets/scss/_variables.scss'],
-    optionsPath: '~/vuetify.options.js'
+    customVariables: ['@/assets/scss/_variables.scss'],
+    optionsPath: '@/vuetify.options.js'
   },
 
   styleResources: {
-    scss: ['~/assets/scss/_init.scss'] // alternative: scss
+    scss: ['@/assets/scss/_init.scss'] // alternative: scss
   },
   buildModules: [
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/global-components',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/vuetify'
   ],
   modules: ['@nuxt/content'],
   content: {
@@ -49,11 +54,19 @@ export default {
       const files = await $content()
         .only(['path'])
         .fetch()
-
-      return files.map((file) => (file.path === '/index' ? '/' : file.path))
+      return files
     }
   },
   build: {
-    extend(config, ctx) {}
+    extend: (config) => {
+      const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
+
+      svgRule.test = /\.(png|jpe?g|gif|webp)$/
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['babel-loader', 'vue-svg-loader']
+      })
+    }
   }
 }

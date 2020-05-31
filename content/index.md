@@ -1,7 +1,7 @@
 ---
 title: Home
 description: This is my homepage
-headshot: https://via.placeholder.com/1024x1024.png?text=Square+Image
+headshot: headshot2.jpg
 path: /
 ---
 

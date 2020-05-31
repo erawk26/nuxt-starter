@@ -1,7 +1,9 @@
 import { company } from '~/site.info.js'
+import resume from '~/assets/resumeData'
 export const state = () => ({
   siteInfo: {
-    company
+    company,
+    resume
   },
   menus: {
     main: [
@@ -10,18 +12,6 @@ export const state = () => ({
         icon: 'home',
         title: 'Intro',
         to: '/'
-      },
-      {
-        external: false,
-        icon: 'home',
-        title: 'Services',
-        to: '/services'
-      },
-      {
-        external: false,
-        icon: 'home',
-        title: 'Contact',
-        to: '/contact'
       },
       {
         external: false,
@@ -35,10 +25,16 @@ export const state = () => ({
         to: '/projects'
       },
       {
-        external: true,
-        icon: 'mdi-file-pdf',
+        external: false,
+        icon: 'home',
+        title: 'Contact',
+        to: '/contact'
+      },
+      {
+        external: false,
+        icon: 'mdi-file-pdf-box',
         title: 'Resume',
-        href: './XXX_Resume.pdf'
+        to: '/resume'
       }
     ],
     footer: [

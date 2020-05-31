@@ -1,7 +1,7 @@
 <template lang="pug">
   section.intro.d-flex.flex-column.align-center.justify-center
     v-avatar.headshot(:size="$vuetify.breakpoint.xsOnly?'150px':'210px'")
-      img.img-circle.elevation-4.mb-1(:src="page.headshot" title="Erik Olsen")
+      v-img.img-circle.elevation-4.mb-1(:src="require('~/assets/img/'+page.headshot)" lazy-src="http://via.placeholder.com/500x500" title="Erik Olsen" alt="Erik Olsen")
     v-card.px-5.mx-5.center-text.avatar-padding(:color="'blue-grey ' + $vuetify.theme.dark?'darken-5':'lighten-5'" elevation="6" :max-width="400" :min-width="200")
       nuxt-content(:document="page")
       nuxt-link.material-icons.mx-1.charcoal--text(to="/projects")
@@ -10,11 +10,10 @@
 </template>
 
 <script>
-import MyMenu from '~/components/Menu.vue'
 export default {
   transition: 'slide-down',
   // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
-  components: { MyMenu },
+  components: { MyMenu: () => import('~/components/Menu.vue') },
   data: () => ({}),
   computed: {
     cardMenu() {

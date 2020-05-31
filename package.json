@@ -14,12 +14,15 @@
   },
   "dependencies": {
     "@nuxt/content": "^1.0.0",
+    "date-fns": "^2.14.0",
     "gsap": "^3.2.6",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-star-rating": "^1.6.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/global-components": "^0.6.1",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/vuetify": "^1.10.2",
     "babel-eslint": "^10.0.1",
@@ -31,6 +34,8 @@
     "prettier": "^1.16.4",
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vue-svg-loader": "^0.16.0",
+    "vue-template-compiler": "^2.6.11"
   }
 }

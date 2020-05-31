@@ -1,19 +1,20 @@
 <template lang="pug">
   v-app
-    v-app-bar(app)
+    v-app-bar.dont-print(app)
       component(is="Header")
     .main-layout.css-grid-2
       v-content.full-width.max-pg-width.row-1.row-span-1.col-full
         .pad-under-max
-          nuxt
-      component(is="Footer").row-2.row-span-1.col-full
+          nuxt.component-content
+      component(is="Footer").row-2.row-span-1.col-full.dont-print
 </template>
 
 <script>
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 export default {
-  components: { Header, Footer },
+  components: {
+    Header: () => import('../components/Header'),
+    Footer: () => import('../components/Footer')
+  },
   data() {
     return {
       scrolled: 'top'
@@ -54,7 +55,7 @@ export default {
   // @media (max-width: $menu-bp - 1) {
   //   grid-template-rows: 0px 1fr 13.5rem;
   // }
-  height: 100%;
+  height: 99.85%;
 }
 .pad-under-max {
   @include pad-under-max;

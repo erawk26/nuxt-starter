@@ -3,14 +3,15 @@
     article
       v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
         v-img.img.flex-grow(:src="require('@/assets/img/'+project.media.img[0].src)")
-        .content.left-text
-          h4.uc {{project.title}}
+        .content.la.uc.full-width 
+          div {{project.title}}
+          small {{project.client}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
         .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
-          h4.uc {{project.title}}
+          | {{project.title}}
           ul.eo-flex.center.wrap.unstyle.cell.omega
             li.skill(v-for="(skill, i) in project.skills")
-              v-chip.ma-1(color="charcoal" text-color="white") {{skill}}
+              v-chip.ma-1(small) {{skill}}
 </template>
 <script>
 import { gsap } from 'gsap'

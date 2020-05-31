@@ -1,5 +1,5 @@
 <template lang="pug">
-  a.link-component(:href="href" :target="target" :title="title")
+  a.link-component(:href="href" :target="target" :title="title||text")
     v-icon.link-icon(aria-hidden="true") {{icon}}
     span(:class="{'screen-reader':hideText}") {{ text }}
 </template>

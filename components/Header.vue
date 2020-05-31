@@ -1,5 +1,6 @@
 <template lang="pug">
-  my-menu.nav-main.menu--main.eo-flex.j-start(type="flat" :menu="$store.state.menus.main" hide-icon :parentState="isMini")
+  .max-pg-width.full-width
+    my-menu.nav-main.menu--main.eo-flex.inline.a-start.j-start(type="flat" :menu="$store.state.menus.main" hide-icon :parentState="isMini")
 </template>
 
 <script>

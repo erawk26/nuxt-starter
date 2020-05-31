@@ -1,10 +1,12 @@
 import Vue from 'vue'
 Vue.mixin({
   methods: {
-    looper(arr, value, dir = 1) {
+    looper(arr, index, dir = 1) {
+      // loop through the pages
       const len = arr.length
-      return arr[(arr.indexOf(value) + ((dir * -1) % len) + len) % len]
+      return (index + (dir % len) + len) % len
     },
+
     debounce(func, wait, immediate) {
       let timeout
       return function() {

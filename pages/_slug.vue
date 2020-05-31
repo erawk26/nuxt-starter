@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <section :class="$route.params.slug">
     <h1>{{ page.title }}</h1>
     <nuxt-content :document="page" />
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,16 +1,17 @@
 <template lang="pug">
-  div
-    v-breadcrumbs.pl-0(:items='crumbs')
-      template(v-slot:divider='')
-        v-icon mdi-chevron-right
-    div(v-if="$route.path!=='/projects'")
-      project-full(:projects='projects' :project='project')
-        template(slot="body")
-          nuxt-content(:document="project")
-      .text-center
-        v-pagination(@input="paginationChange" v-model='projectNum' total-visible="5" :length='projects.length' circle)
-    v-container.cards(v-else grid-list-lg='')
-      v-layout.row.wrap
+  section(:class="$route.params.slug||'index'" class="project")
+    v-container(grid-list-lg='')
+      v-breadcrumbs.pl-0(:items='crumbs')
+        template(v-slot:divider='')
+          v-icon mdi-chevron-right
+      v-layout.project-container.max-pg-width.row.wrap.project--full(v-if="$route.path!=='/projects'")
+        project-full(:projects='projects' :project='project')
+          template(slot="body")
+            nuxt-content(:document="project")
+        .full-width.ca
+          v-pagination(@input="paginationChange" v-model='projectNum' total-visible="5" :length='projects.length' circle)
+      v-layout.row.wrap.cards(v-else)
+        h1.mt-0.full-width {{project.title}}
         v-flex.li(v-for='project in projects' :key='project.slug' xs12='' sm6='' lg4='')
           v-hover
             template(v-slot='{ hover }')
@@ -65,9 +66,8 @@ export default {
         href: '/projects'
       },
       {
-        text: project.title,
-        disabled: true,
-        href: '/projects/' + params.slug
+        text: project.title === 'Projects' ? 'All' : project.title,
+        disabled: true
       }
     ]
     const index = projects.map((x) => x.slug).indexOf(params.slug)
@@ -76,7 +76,6 @@ export default {
   },
   methods: {
     paginationChange(num) {
-      console.log('/projects/' + this.projects[num - 1].slug)
       this.$router.push({
         path: '/projects/' + this.projects[num - 1].slug
       })

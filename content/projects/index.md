@@ -1,5 +1,5 @@
 ---
-title: Projects
+title: My Projects
 description: This is my the Projects List Page
 path: /projects/
 ---

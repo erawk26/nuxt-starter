@@ -5,9 +5,8 @@
         component(:is="imageStyle!=='avatar'?'loading':'v-progress-circular'" :color='$vuetify.theme.currentTheme.primary' indeterminate)
 </template>
 <script>
-import Loading from '~/components/Loading'
 export default {
-  components: { Loading },
+  components: { Loading: () => import('~/components/Loading') },
   props: {
     imageStyle: { type: String, default: 'thumb' },
     handle: { type: String, default: '' },

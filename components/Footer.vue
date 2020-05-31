@@ -9,11 +9,12 @@
 </template>
 
 <script>
-import MyMenu from '~/components/Menu'
-import ThemeBtn from '~/components/ThemeToggle'
 export default {
   name: 'AppFooter',
-  components: { ThemeBtn, MyMenu },
+  components: {
+    ThemeBtn: () => import('~/components/Menu'),
+    MyMenu: () => import('~/components/ThemeToggle')
+  },
   computed: {
     menus() {
       return this.$store.state.menus
