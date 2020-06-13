@@ -3,7 +3,7 @@
     v-app-bar.dont-print(app)
       component(is="Header")
     .main-layout.css-grid-2
-      v-content.full-width.max-pg-width.row-1.row-span-1.col-full
+      v-main.full-width.max-pg-width.row-1.row-span-1.col-full
         .pad-under-max
           nuxt.component-content
       component(is="Footer").row-2.row-span-1.col-full.dont-print
