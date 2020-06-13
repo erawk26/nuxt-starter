@@ -1,5 +1,5 @@
 <template lang="pug">
-  figure(class="media" :class="type")
+  figure.media.full-width.full-height(:class="type")
     v-img(v-if="type=='img'" :aspect-ratio="aspectRatio" :alt="alt||title" :title="title||alt" :lazy-src="lazyUrl" :src="src")
     video(v-if="type=='video'" autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline" width="auto" height="auto" :poster="poster" :title="title" :style="{minHeight:'100%',minWidth:'100%'}")
       source(:src="src" type="video/mp4")
