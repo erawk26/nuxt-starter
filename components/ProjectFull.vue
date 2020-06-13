@@ -15,7 +15,10 @@
       .eo-flex.wrap.j-center.a-start
           .cell.alpha.mt-2
             slot(name="body")
-            p {{project.dateFormatted}}
+            p
+              | I worked on this project 
+              time-since(:date="project.date")
+              | &#32;ago
           .cell.omega.eo-flex.wrap.skills.mt-2(v-if="project.skills")
               small.full-width Skills:
               v-chip.mr-1.mb-1(small :to="'/skills/'+ kebab(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
@@ -24,7 +27,10 @@
 
 <script>
 export default {
-  components: { MyLink: () => import('~/components/Link') },
+  components: {
+    MyLink: () => import('~/components/Link'),
+    TimeSince: () => import('~/components/TimeSince')
+  },
   props: {
     project: {
       type: Object,
