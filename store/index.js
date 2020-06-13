@@ -15,12 +15,6 @@ export const state = () => ({
       },
       {
         external: false,
-        icon: 'home',
-        title: 'About',
-        to: '/about'
-      },
-      {
-        external: false,
         title: 'Projects',
         to: '/projects'
       },
@@ -84,5 +78,44 @@ export const mutations = {
       title: x.title,
       to: payload.key + '/' + x.slug
     }))
+  }
+}
+
+const kebab = (val) =>
+  val
+    .toLowerCase()
+    .replace(/[^\w ]+/g, '')
+    .replace(/ +/g, '-')
+
+export const actions = {
+  async nuxtServerInit({ commit }) {
+    const projects = await this.$content('projects')
+      .where({ slug: { $ne: 'index' } })
+      .sortBy('title')
+      .fetch()
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log({ err, statusCode: 404, message: 'Project not found' })
+      })
+    const pages = await this.$content()
+      // .where({ slug: { $ne: 'index' } })
+      .sortBy('title')
+      .fetch()
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log({ err, statusCode: 404, message: 'Page not found' })
+      })
+    const skills = projects.reduce((skillsObj, currentProject) => {
+      currentProject.skills.forEach((skill) => {
+        if (!(kebab(skill) in skillsObj)) {
+          skillsObj[kebab(skill)] = skill
+        }
+      })
+      return skillsObj
+    }, {})
+    this.commit('SET_STATE', {
+      key: 'cmsData',
+      data: { projects, pages, skills }
+    })
   }
 }

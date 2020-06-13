@@ -41,9 +41,13 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/global-components',
+    '@nuxtjs/google-analytics',
     '@nuxtjs/style-resources',
     '@nuxtjs/vuetify'
   ],
+  googleAnalytics: {
+    id: 'G-7T0JLV856W'
+  },
   modules: ['@nuxt/content'],
   content: {
     // Options
@@ -67,6 +71,17 @@ export default {
         test: /\.svg$/,
         use: ['babel-loader', 'vue-svg-loader']
       })
+    },
+    postcss: {
+      plugins: {
+        'postcss-import': true
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: true
+        }
+      }
     }
   }
 }

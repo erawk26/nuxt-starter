@@ -6,7 +6,6 @@
 </template>
 <script>
 export default {
-  components: { Loading: () => import('~/components/Loading') },
   props: {
     imageStyle: { type: String, default: 'thumb' },
     handle: { type: String, default: '' },

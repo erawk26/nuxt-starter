@@ -1,9 +1,11 @@
 ---
 title: Drupal 8 Site Build
 client: Community Barn Ventures
+date: '2017-03-01'
 media:
-  img:
-    - src: cbv.png
+  -
+    type: img
+    src: cbv.png
 skills:
   - Drupal 8
   - CSS Grid

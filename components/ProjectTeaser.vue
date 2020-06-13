@@ -2,7 +2,7 @@
   nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(:to="'/projects/'+project.slug" :class="$vuetify.breakpoint.smAndUp?'seven-five':'square'")
     article
       v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
-        v-img.img.flex-grow(:src="require('@/assets/img/'+project.media.img[0].src)")
+        v-img.img.flex-grow(:src="require('@/assets/img/'+project.media[0].src)")
         .content.la.uc.full-width 
           div {{project.title}}
           small {{project.client}}
@@ -15,26 +15,13 @@
 </template>
 <script>
 import { gsap } from 'gsap'
-import Link from '~/components/Link.vue'
 export default {
-  components: { Link },
   props: {
     // direction: { type: Number, default: 0 },
     hover: { type: Boolean, default: false },
     project: {
       type: Object,
-      default: () => ({
-        id: null,
-        img: null,
-        logo: null,
-        title: null,
-        skills: [],
-        links: {
-          main: {},
-          other: []
-        },
-        desc: null
-      })
+      default: () => ({})
     }
   },
   computed: {},

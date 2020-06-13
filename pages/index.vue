@@ -27,17 +27,8 @@ export default {
         // eslint-disable-next-line no-console
         console.log({ err, statusCode: 404, message: 'Page not found' })
       })
-    const pages = await $content()
-      .only(['path'])
-      .fetch()
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log({ err, statusCode: 404, message: 'Page not found' })
-      })
-
     return {
-      page,
-      pages
+      page
     }
   }
 }
@@ -55,7 +46,7 @@ section.intro {
   .nav-social a {
     flex: 0;
     i {
-      color: $charcoal;
+      // color: $charcoal;
     }
   }
   .headshot {

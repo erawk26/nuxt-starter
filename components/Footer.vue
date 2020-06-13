@@ -12,8 +12,8 @@
 export default {
   name: 'AppFooter',
   components: {
-    ThemeBtn: () => import('~/components/Menu'),
-    MyMenu: () => import('~/components/ThemeToggle')
+    ThemeBtn: () => import('~/components/ThemeToggle'),
+    MyMenu: () => import('~/components/Menu')
   },
   computed: {
     menus() {

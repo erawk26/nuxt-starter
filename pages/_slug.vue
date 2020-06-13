@@ -1,32 +1,29 @@
 <template>
   <section :class="$route.params.slug">
-    <h1>{{ page.title }}</h1>
-    <nuxt-content :document="page" />
+    <div v-if="page" class="content">
+      <h1>{{ page.title }}</h1>
+      <nuxt-content :document="page" />
+    </div>
+    <loading v-else class="loading" />
   </section>
 </template>
 
 <script>
 export default {
-  async asyncData({ $content, params, error }) {
-    const slug = params.slug || 'index'
-    const page = await $content(slug)
-      .fetch()
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log({ err, statusCode: 404, message: 'Page not found' })
-      })
-    const pages = await $content()
-      .only(['path'])
-      .fetch()
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log({ err, statusCode: 404, message: 'Page not found' })
-      })
-
+  data() {
     return {
-      page,
-      pages
+      page: null,
+      pages: this.$store.state.cmsData.pages
     }
+  },
+  async fetch() {
+    const slug = this.$route.params.slug || 'index'
+    this.page = await this.$content(slug)
+      .fetch()
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log({ err, statusCode: 404, message: 'Page not found' })
+      })
   }
 }
 </script>

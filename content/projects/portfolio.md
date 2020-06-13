@@ -1,9 +1,15 @@
 ---
 title: Nuxt Portfolio
 client: Erik the Developer
+date: '2020-06-01'
 media:
-  img:
-    - src: portfolio.png
+  -
+    type: img
+    src: portfolio.png
+  -
+    type: video
+    src: whybm.mp4
+    poster: null
 skills:
   - ES6+ VanillaJS
   - VueJS

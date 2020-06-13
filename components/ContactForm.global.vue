@@ -108,14 +108,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.form-container {
-  @include set-max-width(500px);
-}
+<style lang="scss" scoped>
 .contact-info {
   position: relative;
   z-index: 12;
-  margin: 10px 0;
   .cell {
     margin-right: 0.5em;
   }
@@ -123,5 +119,14 @@ export default {
     height: 30px;
     width: auto;
   }
+}
+</style>
+
+<style lang="scss">
+.theme--dark img.txt {
+  filter: invert(1);
+}
+.form-container {
+  @include set-max-width(500px);
 }
 </style>

@@ -1,11 +1,11 @@
 <template lang="pug">
   section(:class="$route.params.slug||'index'" class="project")
-    v-container(grid-list-lg='')
+    v-container(grid-list-lg='' v-if="project")
       v-breadcrumbs.pl-0(:items='crumbs')
         template(v-slot:divider='')
           v-icon mdi-chevron-right
       v-layout.project-container.max-pg-width.row.wrap.project--full(v-if="$route.path!=='/projects'")
-        project-full(:projects='projects' :project='project')
+        project-full(v-if="project" :projects='projects' :project='project')
           template(slot="body")
             nuxt-content(:document="project")
         .full-width.ca
@@ -13,17 +13,31 @@
       v-layout.row.wrap.cards(v-else)
         h1.mt-0.full-width {{project.title}}
         v-flex.li(v-for='project in projects' :key='project.slug' xs12='' sm6='' lg4='')
-          v-hover
-            template(v-slot='{ hover }')
-              project-teaser(:key="project.slug" :hover='hover' :project="project" xs12='' sm6='' lg4='')
+          v-hover(v-slot:default="{ hover }")
+            project-teaser(:key="project.slug" :hover='hover' :project="project" xs12='' sm6='' lg4='')
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+import { parseISO, formatDistance } from 'date-fns'
 import ProjectTeaser from '@/components/ProjectTeaser'
 import ProjectFull from '@/components/ProjectFull'
 export default {
   components: { ProjectTeaser, ProjectFull },
-  computed: {},
+  data() {
+    return {
+      skills: this.$store.state.cmsData.skills,
+      projects: this.$store.state.cmsData.projects,
+      index: this.$store.state.cmsData.projects
+        .map((x) => x.slug)
+        .indexOf(this.$route.params.slug)
+    }
+  },
+  computed: {
+    projectNum() {
+      return this.index !== -1 ? this.index + 1 : 1
+    }
+  },
   async asyncData({ $content, params, error }) {
     const slug = params.slug || 'index'
     const project = await $content('projects', slug)
@@ -32,28 +46,11 @@ export default {
         // eslint-disable-next-line no-console
         console.log({ err, statusCode: 404, message: 'Page not found' })
       })
-    const projects = await $content('projects')
-      // .only(['path'])
-      .where({ slug: { $ne: 'index' } })
-      .sortBy('title')
-      .fetch()
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log({ err, statusCode: 404, message: 'Page not found' })
-      })
-    const skills = projects.reduce((skillsObj, currentProject) => {
-      const kebab = (val) =>
-        val
-          .toLowerCase()
-          .replace(/[^\w ]+/g, '')
-          .replace(/ +/g, '-')
-      currentProject.skills.forEach((skill) => {
-        if (!(kebab(skill) in skillsObj)) {
-          skillsObj[kebab(skill)] = skill
-        }
-      })
-      return skillsObj
-    }, {})
+    console.log(project.date)
+    project.dateFormatted = `I worked on this project: ${formatDistance(
+      parseISO(project.date),
+      new Date()
+    )} ago`
     const crumbs = [
       {
         text: 'Home',
@@ -66,13 +63,11 @@ export default {
         href: '/projects'
       },
       {
-        text: project.title === 'Projects' ? 'All' : project.title,
+        text: slug === 'index' ? 'All' : project.client,
         disabled: true
       }
     ]
-    const index = projects.map((x) => x.slug).indexOf(params.slug)
-    const projectNum = index !== -1 ? index + 1 : 1
-    return { skills, project, projects, crumbs, projectNum }
+    return { project, crumbs }
   },
   methods: {
     paginationChange(num) {

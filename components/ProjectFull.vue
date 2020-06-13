@@ -1,23 +1,24 @@
 <template lang="pug">
     v-container
       v-card
-        v-img(:src="require('~/assets/img/'+project.media.img[0].src)" aspect-ratio="1.77" :title="project.title" :alt="project.title")
+        v-img(:src="require('~/assets/img/'+project.media[0].src)" aspect-ratio="1.77" :title="project.title" :alt="project.title")
       .title-wrapper.d-flex.align-end.justify-space-between
         .cell.eo-flex.a-center
-          h1.display-2 {{ project.title }}
+          h1.display-2 {{ project.client }}
           template(v-for="link in project.links" )
             my-link.ml-2(:text="link.text" :icon="link.icon||'mdi-link'" :href="link.href" :target="link.target" :title="link.title" hideText)
         small.counter.flex-shrink-0 {{active + 1}} / {{keys.length}}
           nuxt-link(:to="keys[looper(projects,active,1)]" :key="active")
             v-icon chevron_right
-      h6.client.mb-3 {{project.client}}
+      h6.client.mb-3 {{project.title}}
       v-divider
       .eo-flex.wrap.j-center.a-start
           .cell.alpha.mt-2
-              slot(name="body")
+            slot(name="body")
+            p {{project.dateFormatted}}
           .cell.omega.eo-flex.wrap.skills.mt-2(v-if="project.skills")
               small.full-width Skills:
-              v-chip.mr-1.mb-1(small :to="'/skill/'+ kebab(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
+              v-chip.mr-1.mb-1(small :to="'/skills/'+ kebab(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
     
 </template>
 

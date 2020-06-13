@@ -50,17 +50,29 @@
 <script>
 import { format, parseISO } from 'date-fns'
 export default {
-  transition: 'slide-down',
   // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
   components: {
     HeadshotSvg: () => import('~/assets/img/headshot.svg'),
     MyMenu: () => import('~/components/Menu.vue'),
     MyLink: () => import('~/components/Link.vue')
   },
-  computed: {
-    resume() {
-      return this.$store.state.siteInfo.resume // .slice(1)
+  data() {
+    return {
+      page: null,
+      pages: this.$store.state.siteInfo.pages,
+      resume: this.$store.state.siteInfo.resume
     }
+  },
+  transition: 'slide-down',
+  computed: {},
+  async fetch() {
+    const slug = this.$route.params.slug || 'index'
+    this.page = await this.$content(slug)
+      .fetch()
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log({ err, statusCode: 404, message: 'Page not found' })
+      })
   },
   methods: {
     formatDate: (str) =>

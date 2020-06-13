@@ -1,12 +1,14 @@
 ---
 title: Drupal 7 Site Features
 client: MBF Bioscience
+date: '2017-03-01'
 links:
   - target: _blank
     href: https://www.mbfbioscience.com
 media:
-  img:
-    - src: mbf.jpg
+  -
+    type: img
+    src: mbf.jpg
 skills:
   - Drupal 7
   - Responsive Styling
