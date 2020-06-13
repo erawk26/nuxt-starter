@@ -16,7 +16,7 @@
       .eo-flex.pa-0.col.a-stretch.col-left.row-2.row-span-1
         .skill.pl-4.eo-flex.rel(v-for="(rating,name) in resume.skills" :key="name" :title="'Experience Level: '+rating")
           .name.my-2.flex-grow-1.all-caps {{name}}
-          no-ssr(placeholder="Loading...")
+          client-only(placeholder="Loading...")
             star-rating(:rating="rating" rtl read-only :increment="0.25" :star-size="20" :show-rating="false")
       .contact-info.pl-4.eo-flex.col.a-stretch.col-left.row-3.row-span-1
         h3.uc Get in Touch
@@ -50,6 +50,17 @@
 <script>
 import { format, parseISO } from 'date-fns'
 export default {
+  head() {
+    return {
+      link: [
+        {
+          rel: 'stylesheet',
+          href:
+            'https://fonts.googleapis.com/css2?family=Open+Sans||Fjalla+One&display=swap'
+        }
+      ]
+    }
+  },
   // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
   components: {
     HeadshotSvg: () => import('~/assets/img/headshot.svg'),
@@ -84,7 +95,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans||Fjalla+One&display=swap');
 section.resume {
   > .css-grid-2 {
     border: 1px solid #ccc;
