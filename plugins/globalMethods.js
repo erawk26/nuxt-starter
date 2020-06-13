@@ -22,6 +22,13 @@ Vue.mixin({
         if (callNow) func.apply(context, args)
       }
     },
+    onHover(ref, bool) {
+      if (bool) {
+        this.$refs[ref][0].forward()
+      } else {
+        this.$refs[ref][0].reverse()
+      }
+    },
     kebab: (val) =>
       val
         .toLowerCase()

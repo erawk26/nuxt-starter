@@ -18,10 +18,15 @@ import { gsap } from 'gsap'
 export default {
   props: {
     // direction: { type: Number, default: 0 },
-    hover: { type: Boolean, default: false },
+    // hover: { type: Boolean, default: false },
     project: {
       type: Object,
       default: () => ({})
+    }
+  },
+  data() {
+    return {
+      hover: false
     }
   },
   computed: {},
@@ -39,6 +44,14 @@ export default {
     gsap.set(this.$el.querySelector('.card-back'), { rotationY: -180 })
   },
   methods: {
+    forward() {
+      this.hover = true
+      this.$emit('forward')
+    },
+    reverse() {
+      this.hover = false
+      this.$emit('reverse')
+    },
     animation(dir) {
       const frontRotation = dir > 0 ? 180 : 0
       const backRotation = dir > 0 ? 0 : -180

@@ -26,7 +26,7 @@
     "@nuxtjs/global-components": "^0.6.1",
     "@nuxtjs/google-analytics": "^2.3.0",
     "@nuxtjs/style-resources": "^1.0.0",
-    "@nuxtjs/vuetify": "^1.10.2",
+    "@nuxtjs/vuetify": "^1.11.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^4.1.0",

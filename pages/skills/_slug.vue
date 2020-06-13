@@ -9,8 +9,7 @@
         h1.mt-0.full-width {{page.title}}
         multiselect.skills-options(:options="skillsOptions()" id="skills-options" v-model="selected" @input="filterNodes" multiple close-on-select :clear-on-select="false" :preserve-search="true" placeholder="Choose Skills" label="name" track-by="name")
       v-flex.li(v-for='project in skilledProjects' :key='project.slug' xs12='' sm6='' lg4='')
-        v-hover(v-slot:default="{ hover }")
-          project-teaser(:key="project.slug" :hover='hover' :project="project" xs12='' sm6='' lg4='')
+        project-teaser(:ref="project.slug" v-hover="{ over: () => onHover(project.slug,true), leave: () => onHover(project.slug,false) }" :key="project.slug" :project="project" xs12='' sm6='' lg4='')
 </template>
 
 <script>

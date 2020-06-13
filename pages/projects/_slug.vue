@@ -13,13 +13,11 @@
       v-layout.row.wrap.cards(v-else)
         h1.mt-0.full-width {{project.title}}
         v-flex.li(v-for='project in projects' :key='project.slug' xs12='' sm6='' lg4='')
-          v-hover(v-slot:default="{ hover }")
-            project-teaser(:key="project.slug" :hover='hover' :project="project" xs12='' sm6='' lg4='')
+          project-teaser(:ref="project.slug" v-hover="{ over: () => onHover(project.slug,true), leave: () => onHover(project.slug,false) }" :key="project.slug" :project="project" xs12='' sm6='' lg4='')
 </template>
 
 <script>
 // eslint-disable-next-line no-unused-vars
-import { parseISO, formatDistance } from 'date-fns'
 import ProjectTeaser from '@/components/ProjectTeaser'
 import ProjectFull from '@/components/ProjectFull'
 export default {
@@ -46,11 +44,6 @@ export default {
         // eslint-disable-next-line no-console
         console.log({ err, statusCode: 404, message: 'Page not found' })
       })
-    console.log(project.date)
-    project.dateFormatted = `I worked on this project: ${formatDistance(
-      parseISO(project.date),
-      new Date()
-    )} ago`
     const crumbs = [
       {
         text: 'Home',
