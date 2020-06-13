@@ -28,11 +28,11 @@ export default {
   plugins: [
     { src: '~/plugins/starRating.js', mode: 'client' },
     '~/plugins/globalMethods.js',
-    '~/plugins/updateClient.js'
+    '~/plugins/directives.js'
   ],
   vuetify: {
-    customVariables: ['@/assets/scss/_variables.scss'],
-    optionsPath: '@/vuetify.options.js'
+    customVariables: ['~/assets/scss/_variables.scss'],
+    optionsPath: '~/vuetify.options.js'
   },
 
   styleResources: {
@@ -40,10 +40,10 @@ export default {
   },
   buildModules: [
     '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify',
     '@nuxtjs/global-components',
     '@nuxtjs/google-analytics',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/style-resources'
   ],
   googleAnalytics: {
     id: 'G-7T0JLV856W'
@@ -58,7 +58,7 @@ export default {
       const files = await $content()
         .only(['path'])
         .fetch()
-      return files
+      return files.map((file) => (file.path === '/index' ? '/' : file.path))
     }
   },
   build: {
