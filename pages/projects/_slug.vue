@@ -9,7 +9,7 @@
           template(slot="body")
             nuxt-content(:document="project")
         .full-width.ca
-          v-pagination(@input="paginationChange" v-model='projectNum' total-visible="5" :length='projects.length' circle)
+          v-pagination(@input="paginationChange" :value="index+1" total-visible="5" :length='projects.length' circle)
       v-layout.row.wrap.cards(v-else)
         h1.mt-0.full-width {{project.title}}
         v-flex.li(v-for='project in projects' :key='project.slug' xs12='' sm6='' lg4='')
@@ -31,11 +31,7 @@ export default {
         .indexOf(this.$route.params.slug)
     }
   },
-  computed: {
-    projectNum() {
-      return this.index !== -1 ? this.index + 1 : 1
-    }
-  },
+  computed: {},
   async asyncData({ $content, params, error }) {
     const slug = params.slug || 'index'
     const project = await $content('projects', slug)
