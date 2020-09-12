@@ -27,6 +27,7 @@ export default {
   css: [],
   plugins: [
     { src: '~/plugins/starRating.js', mode: 'client' },
+    { src: '~/plugins/youtube.js', ssr: false },
     '~/plugins/globalMethods.js',
     '~/plugins/directives.js'
   ],
