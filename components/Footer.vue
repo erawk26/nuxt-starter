@@ -1,10 +1,10 @@
 <template lang="pug">
-  .row-2.row-span-1.col-full.full-width
-    v-card.max-pg-width.d-flex.align-center.justify-start.flex-wrap.px-2(tile elevation="0")
+  v-card.row-2.row-span-1.col-full.full-width.px-3(tile elevation="0" transparent)
+    .max-pg-width.d-flex.align-center.justify-start.flex-wrap
       .cell.flex-grow.copy
         theme-btn.mr-3
         sub &copy; 2015 - {{ year }}. {{ companyName }}
-      .cell
+      .cell.ml-3
         my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" hide-text type="flat")
 </template>
 
