@@ -18,10 +18,12 @@
 
 <script>
 // eslint-disable-next-line no-unused-vars
-import ProjectTeaser from '@/components/ProjectTeaser'
-import ProjectFull from '@/components/ProjectFull'
+
 export default {
-  components: { ProjectTeaser, ProjectFull },
+  components: {
+    ProjectTeaser: () => import('@/components/ProjectTeaser'),
+    ProjectFull: () => import('@/components/ProjectFull')
+  },
   data() {
     return {
       skills: this.$store.state.cmsData.skills,
