@@ -1,12 +1,12 @@
 <template lang="pug">
     v-container
       v-card
-        media(v-if="project.media.length===1" v-bind="getMediaBind(project.media[0])")
-        v-carousel(v-else-if="project.media.length>1" hide-delimiter-background show-arrows-on-hover cycle)
-          v-carousel-item(v-for='(item, i) in project.media', :key='i')
+        media(v-if="project.media.length===1" v-bind="getMediaBind(project)")
+        v-carousel(v-else-if="project.media.length>1" height="auto" hide-delimiter-background show-arrows-on-hover @change="onCarouselChange")
+          v-carousel-item(v-for='(item, i) in project.media', tag="div" :key='i')
             v-sheet(height='100%')
               v-row.fill-height(align='center' justify='center')
-                media(v-bind="getMediaBind(item)")
+                media(v-bind="getMediaBind(project,i)" :active="i===activeSlide")
       .title-wrapper.d-flex.align-end.justify-space-between
         .cell.eo-flex.a-center
           h1.display-2 {{ project.client }}
@@ -15,7 +15,7 @@
         small.counter.flex-shrink-0 {{active + 1}} / {{keys.length}}
           nuxt-link(:to="keys[looper(projects,active,1)]" :key="active")
             v-icon chevron_right
-      h6.client.mb-3 {{project.title}}
+      subheading {{project.title}}
       v-divider
       .eo-flex.wrap.j-center.a-start
           .cell.alpha.mt-2
@@ -49,20 +49,14 @@ export default {
   data() {
     return {
       keys: this.projects.map((x) => x.slug),
-      active: this.projects.map((x) => x.slug).indexOf(this.project.slug)
+      active: this.projects.map((x) => x.slug).indexOf(this.project.slug),
+      activeSlide: null
     }
   },
   methods: {
-    getMediaBind(data) {
-      return {
-        src: require(`~/assets/${data.type}/${data.src}`),
-        lazyUrl: data.lazyUrl || null,
-        type: data.type,
-        alt: data.type + ' of ' + this.project.title,
-        aspectRatio: 1.77,
-        poster: data.poster ? `~/assets/video/${data.poster}` : null,
-        title: data.type + ' of ' + this.project.title
-      }
+    onCarouselChange(evt) {
+      this.activeSlide = evt
+      // console.log(evt)
     }
   }
 }
