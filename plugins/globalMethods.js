@@ -22,26 +22,30 @@ Vue.mixin({
         if (callNow) func.apply(context, args)
       }
     },
-    getMediaBind(data) {
-      const obj = {
-        lazyUrl: data.lazyUrl || null,
-        ytId: data.ytId || null,
-        sources: [],
-        type: data.type,
-        alt: data.type + ' of ' + this.project.title,
-        aspectRatio: 1.77,
-        title: data.type + ' of ' + this.project.title
+    getMediaBind(data, i) {
+      if (i === undefined) {
+        i = 0
       }
-      if (data.type === 'video') {
-        obj.sources = data.sources.map((file) =>
+      const media = data.media[i]
+      const obj = {
+        aspectRatio: media.aspectRatio || 1.77,
+        lazyUrl: media.lazyUrl || null,
+        ytId: media.ytId || null,
+        sources: [],
+        type: media.type,
+        alt: media.alt || media.type + ' of ' + data.title,
+        title: media.title || media.type + ' of ' + data.title
+      }
+      if (media.type === 'video') {
+        obj.sources = media.sources.map((file) =>
           require(`~/assets/video/${file}`)
         )
-        if (data.poster) {
-          obj.poster = `~/assets/video/${data.poster}`
+        if (media.poster) {
+          obj.poster = `~/assets/video/${media.poster}`
         }
       }
-      if (data.src) {
-        obj.src = require(`~/assets/img/${data.src}`)
+      if (media.src) {
+        obj.src = require(`~/assets/img/${media.src}`)
       }
       return obj
     },
