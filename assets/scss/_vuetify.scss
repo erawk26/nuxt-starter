@@ -20,4 +20,7 @@
   .overline {
     font-family: $body-font-family !important;
   }
+  [class^='nav-'] {
+    font-family: $heading-font-family;
+  }
 }
