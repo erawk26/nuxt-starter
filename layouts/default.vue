@@ -3,8 +3,8 @@
     v-app-bar.dont-print(app)
       component(is="Header")
     .main-layout.css-grid-2
-      v-main.full-width.max-pg-width.row-1.row-span-1.col-full
-        .pad-under-max
+      v-content.full-width.px-5.row-1.row-span-1.col-full
+        .max-pg-width
           nuxt.component-content
       component(is="Footer").row-2.row-span-1.col-full.dont-print
 </template>
@@ -55,14 +55,8 @@ export default {
   // @media (max-width: $menu-bp - 1) {
   //   grid-template-rows: 0px 1fr 13.5rem;
   // }
-  height: 99.85%;
-}
-.pad-under-max {
-  @include pad-under-max;
-  @media (max-width: $menu-bp - 1) {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
+  height: 100%;
+  overflow: hidden;
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;
