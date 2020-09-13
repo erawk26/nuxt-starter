@@ -1,15 +1,16 @@
 <template>
-  <span class="abs-center full-height full-width">
+  <span class="abs-center full-height full-width ">
     <transition name="fade">
       <v-img
         v-if="loading || (!playerVars.loop && ended)"
         :src="poster"
         class="poster"
-        max-width="100%"
-        max-height="100%"
+        width="100%"
+        height="100%"
         background-position="center"
-      ></v-img>
+      />
     </transition>
+    <loading v-if="loading" color="#c4302b" class="abs-center yt-loading" />
     <youtube-media
       ref="youtube"
       v-if="ytId"
