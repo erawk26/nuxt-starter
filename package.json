@@ -16,9 +16,11 @@
     "@nuxt/content": "^1.0.0",
     "date-fns": "^2.14.0",
     "gsap": "^3.2.6",
+    "lodash.debounce": "^4.0.8",
     "nuxt": "^2.0.0",
     "vue-multiselect": "^2.1.6",
-    "vue-star-rating": "^1.6.1"
+    "vue-star-rating": "^1.6.1",
+    "vue-youtube-embed": "^2.2.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
