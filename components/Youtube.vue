@@ -5,6 +5,9 @@
         v-if="loading || (!playerVars.loop && ended)"
         :src="poster"
         class="poster"
+        max-width="100%"
+        max-height="100%"
+        background-position="center"
       ></v-img>
     </transition>
     <youtube-media
