@@ -22,11 +22,34 @@ Vue.mixin({
         if (callNow) func.apply(context, args)
       }
     },
+    getMediaBind(data) {
+      const obj = {
+        lazyUrl: data.lazyUrl || null,
+        ytId: data.ytId || null,
+        sources: [],
+        type: data.type,
+        alt: data.type + ' of ' + this.project.title,
+        aspectRatio: 1.77,
+        title: data.type + ' of ' + this.project.title
+      }
+      if (data.type === 'video') {
+        obj.sources = data.sources.map((file) =>
+          require(`~/assets/video/${file}`)
+        )
+        if (data.poster) {
+          obj.poster = `~/assets/video/${data.poster}`
+        }
+      }
+      if (data.src) {
+        obj.src = require(`~/assets/img/${data.src}`)
+      }
+      return obj
+    },
     onHover(ref, bool) {
       if (bool) {
-        this.$refs[ref][0].forward()
+        this.$refs[ref][0].enter()
       } else {
-        this.$refs[ref][0].reverse()
+        this.$refs[ref][0].exit()
       }
     },
     kebab: (val) =>

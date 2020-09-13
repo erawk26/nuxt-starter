@@ -45,8 +45,15 @@ export default {
     }
   },
   data() {
-    return { ended: false, loading: true, interval: null, player: null }
+    return {
+      ended: false,
+      loading: true,
+      interval: null,
+      player: null,
+      statusMsg: null
+    }
   },
+  watch: { statusMsg: (message) => console.log(message) },
   methods: {
     calculateProgress() {
       if (this.player) {
@@ -63,6 +70,7 @@ export default {
     },
     onReady(evt) {
       this.player = evt.target
+      evt.target.setPlaybackQuality('hd1080')
     },
     onEnded(evt) {
       this.ended = true
@@ -72,13 +80,14 @@ export default {
         this.clearProgressTracking()
       }
     },
-    onPlay() {
+    onPlay(evt) {
+      evt.target.setPlaybackQuality('hd1080')
       const data = this.player.getVideoData()
       setTimeout(() => {
         if (this.loading) {
           this.player.seekTo(0)
           this.loading = false
-          this.$emit('loaded', this.ytId)
+          this.$emit('loaded', { ytId: this.ytId, player: this.player })
         }
       }, 3000)
       if (!this.interval) {
@@ -89,9 +98,7 @@ export default {
             this.calculateProgress()
           ) {
             lastProgress = this.calculateProgress()
-            console.log(
-              `YouTube Progress: Watched ${lastProgress}% of "${data.title}"`
-            )
+            this.statusMsg = `YouTube Progress: Watched ${lastProgress}% of "${data.title}"`
             if (lastProgress === 100) {
               this.onEnded()
             }
