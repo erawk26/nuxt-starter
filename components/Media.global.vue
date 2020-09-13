@@ -44,10 +44,10 @@ export default {
   },
   methods: {
     onMediaLoad(data) {
-      console.log(
-        data.type === 'image' ? 'Image Loaded' : 'Playing ' + data.type,
-        data
-      )
+      // console.log(
+      //   data.type === 'image' ? 'Image Loaded' : 'Playing ' + data.type,
+      //   data
+      // )
       this.loading = false
       this.$emit('loaded', data)
     }
