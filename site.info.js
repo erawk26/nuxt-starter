@@ -1,13 +1,14 @@
 export const company = {
-  name: 'Some Company',
-  address: '123 Drive Way',
-  city: 'Anywhere',
-  state: 'NY',
-  zip: '12121',
-  email: 'xxx@email.com',
-  phone: '555-555-5555',
-  twitter: 'somecompany', // leave out the @ symbol
-  instagram: 'somecompany',
-  linkedin: 'somecompany',
-  facebook: 'somecompany'
+  name: 'Erik Olsen',
+  address: '1214 Sea Plume Way',
+  city: 'Sarasota',
+  state: 'FL',
+  zip: '34242',
+  email: 'me@erikthedeveloper.com',
+  website: 'http://erikthedeveloper.com',
+  phone: '+1-802-851-5512',
+  // twitter: 'somecompany', // leave out the @ symbol
+  instagram: 'erikthedeveloper',
+  linkedin: 'erikthedeveloper',
+  facebook: 'Barista26'
 }
