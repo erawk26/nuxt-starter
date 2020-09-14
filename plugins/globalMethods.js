@@ -28,7 +28,7 @@ Vue.mixin({
       }
       const media = data.media[i]
       const obj = {
-        aspectRatio: media.aspectRatio || 1.77,
+        aspectRatio: data.aspectRatio === undefined ? 1.77 : data.aspectRatio,
         lazyUrl: media.lazyUrl || null,
         ytId: media.ytId || null,
         sources: [],
