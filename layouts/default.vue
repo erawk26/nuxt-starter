@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~/assets/scss/_atomic.scss';
+@import '~/assets/scss/_utility.scss';
 @import '~/assets/scss/_animations.scss';
 @import '~/assets/scss/_global.scss';
 .main-layout {
