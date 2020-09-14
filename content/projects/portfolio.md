@@ -6,6 +6,17 @@ media:
   -
     type: img
     src: portfolio.png
+  # -
+  #   type: video
+  #   sources:
+  #     - macys-map.mp4
+  # -
+  #   type: video
+  #   sources: 
+  #     - minn-by-season.mp4
+  # -
+  #   type: youtube
+  #   ytId: IfH0AvitYRo
 skills:
   - ES6+ VanillaJS
   - VueJS
