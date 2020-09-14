@@ -2,16 +2,15 @@
   nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(:to="'/projects/'+project.slug" :class="$vuetify.breakpoint.smAndUp?'seven-five':'square'")
     article
       v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
-        v-img.img.flex-grow(:src="require('@/assets/img/'+project.media[0].src)")
+        media(v-if="project.media" v-bind="getMediaBind(project.media[0])")
         .content.la.uc.full-width 
           div {{project.title}}
           small {{project.client}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
         .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
-          | {{project.title}}
-          ul.eo-flex.center.wrap.unstyle.cell.omega
-            li.skill(v-for="(skill, i) in project.skills")
-              v-chip.ma-1(small) {{skill}}
+          h3 {{project.title}}
+          .skill-wrap
+            span(v-for="(skill, i) in project.skills") {{skill}}
 </template>
 <script>
 import { gsap } from 'gsap'
@@ -44,13 +43,13 @@ export default {
     gsap.set(this.$el.querySelector('.card-back'), { rotationY: -180 })
   },
   methods: {
-    forward() {
+    enter() {
       this.hover = true
-      this.$emit('forward')
+      this.$emit('enter')
     },
-    reverse() {
+    exit() {
       this.hover = false
-      this.$emit('reverse')
+      this.$emit('exit')
     },
     animation(dir) {
       const frontRotation = dir > 0 ? 180 : 0
@@ -95,8 +94,25 @@ export default {
       z-index: 0;
     }
   }
+  .card-front {
+    .v-image {
+      height: 100%;
+    }
+  }
   .card-back .content {
     height: 100%;
+  }
+}
+.skill-wrap {
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  span {
+    text-align: left;
+    flex: 1 1 49.5%;
+    min-width: 49.5%;
+    max-width: 49.5%;
+    padding: 0.5rem 1rem;
   }
 }
 </style>
