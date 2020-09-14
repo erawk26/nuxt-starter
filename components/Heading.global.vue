@@ -1,15 +1,15 @@
 <template>
-  <h5
+  <h3
     v-bind="$attrs"
     v-on="$listeners"
-    class="subheading text-uppercase font-weight-medium"
+    class="heading text-uppercase font-weight-medium"
   >
     <slot />
-  </h5>
+  </h3>
 </template>
 
 <script>
 export default {
-  name: 'Subheading'
+  name: 'Heading'
 }
 </script>
