@@ -2,8 +2,8 @@
   nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(:to="'/projects/'+project.slug" :class="$vuetify.breakpoint.smAndUp?'seven-five':'square'")
     article
       v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
-        media(v-if="project.media" v-bind="getMediaBind(project.media[0])")
-        .content.la.uc.full-width 
+        media(v-if="project.media" v-bind="getMediaBind({project},0)")
+        .content.la.uc.full-width
           div {{project.title}}
           small {{project.client}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
