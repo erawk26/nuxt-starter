@@ -19,15 +19,16 @@
       v-divider
       .eo-flex.wrap.j-center.a-start
           .cell.alpha.mt-2
-            slot(name="body")
+            p {{project.description}}
             p
-              | I worked on this project 
+              | I worked on this project&#32;
               time-since(:date="project.date")
               | &#32;ago
+            slot(name="below-body")
           .cell.omega.eo-flex.wrap.skills.mt-2(v-if="project.skills")
               small.full-width Skills:
               v-chip.mr-1.mb-1(small :to="'/skills/'+ kebab(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
-    
+
 </template>
 
 <script>
