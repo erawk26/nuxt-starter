@@ -1,20 +1,59 @@
 <template lang="pug">
-  v-container.cards(grid-list-lg='')
-    v-breadcrumbs.pl-0(:items='crumbs')
-      template(v-slot:divider='')
-        v-icon mdi-chevron-right
-    v-layout.row.wrap
-      h1.mt-0.full-width(v-if="$route.path!=='/skills'") Skill: {{tag}}
-      .skills.mt-2.full-width(v-else-if="page" lg12)
-        h1.mt-0.full-width {{page.title}}
-        multiselect.skills-options(:options="skillsOptions()" id="skills-options" v-model="selected" @input="filterNodes" multiple close-on-select :clear-on-select="false" :preserve-search="true" placeholder="Choose Skills" label="name" track-by="name")
-      v-flex.li(v-for='project in skilledProjects' :key='project.slug' xs12='' sm6='' lg4='')
-        project-teaser(:ref="project.slug" v-hover="{ over: () => onHover(project.slug,true), leave: () => onHover(project.slug,false) }" :key="project.slug" :project="project" xs12='' sm6='' lg4='')
+v-container.cards(grid-list-lg='')
+  v-breadcrumbs.pl-0(:items='crumbs')
+    template(v-slot:divider='')
+      v-icon mdi-chevron-right
+  v-layout.row.wrap
+    h1.mt-0.full-width(v-if='$route.path !== "/skills"') Skill: {{ tag }}
+    .skills.mt-2.full-width(v-else-if='page', lg12)
+      h1.mt-0.full-width {{ page.title }}
+      multiselect#skills-options.skills-options(
+        :options='skillsOptions()',
+        v-model='selected',
+        @input='filterNodes',
+        multiple,
+        close-on-select,
+        :clear-on-select='false',
+        :preserve-search='true',
+        placeholder='Choose Skills',
+        label='name',
+        track-by='name'
+      )
+    v-flex.li(
+      v-for='project in skilledProjects',
+      :key='project.slug',
+      xs12='',
+      sm6='',
+      lg4=''
+    )
+      project-teaser(
+        :ref='project.slug',
+        v-hover='{ over: () => onHover(project.slug,true), leave: () => onHover(project.slug,false) }',
+        :key='project.slug',
+        :project='project',
+        xs12='',
+        sm6='',
+        lg4=''
+      )
 </template>
 
 <script>
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 export default {
+  head() {
+    return {
+      title: `EO Portfolio | ${this.tag || 'Skills'}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$route.params.slug
+            ? `A list of projects using ${this.tag}`
+            : 'All my projects sorted by skill'
+        }
+      ]
+    }
+  },
   components: {
     Multiselect: () => import('vue-multiselect'),
     ProjectTeaser: () => import('@/components/ProjectTeaser')

@@ -1,50 +1,72 @@
 <template lang="pug">
-  section.resume.my-5
-    .obtions.mb3.eo-flex.a-center.j-end.dont-print
-      my-link.ml-2.mb-2(:hide-text="true" icon="mdi-file-pdf-box" href="./ErikOlsen_Resume_nuxt.pdf" text="View Pdf")
-      my-link.ml-2.mb-2(:hide-text="true" icon="mdi-download" href="./ErikOlsen_Resume_nuxt.pdf" text="Download" download)
-    v-divider.my2
-    .document.css-grid-2
-      .top-block.eo-flex.j-center.a-center.col-left.row-1.row-span-1.pt-3
-        div.ma-4
-          headshot-svg.headshot
-        span.content
-          .uc.ma-0
-            .fname {{resume.fname}}
-            .lname {{resume.lname}}
-          .jobtitle.uc.mt-2 {{resume.title}}
-      .eo-flex.pa-0.col.a-stretch.col-left.row-2.row-span-1
-        .skill.pl-4.eo-flex.rel(v-for="(rating,name) in resume.skills" :key="name" :title="'Experience Level: '+rating")
-          .name.my-2.flex-grow-1.all-caps {{name}}
-          client-only(placeholder="Loading...")
-            star-rating(:rating="rating" rtl read-only :increment="0.25" :star-size="20" :show-rating="false")
-      .contact-info.pl-4.eo-flex.col.a-stretch.col-left.row-3.row-span-1
-        h3.uc Get in Touch
-        .css-grid-2.content
-            .row-1.col-left mobile
-            a.row-1.col-right.block.unstyle(:href="resume.mobile.url") {{resume.mobile.label}}
-            .row-2.col-left email
-            a.row-2.col-right.block.unstyle(:href="resume.email.url") {{resume.email.label}}
-            .row-3.col-left website
-            a.row-3.col-right.block.unstyle(:href="resume.website.url") {{resume.website.label}}
-            .row-4.col-left linkedin
-            a.row-4.col-right.block.unstyle(:href="resume.linkedin.url") {{resume.linkedin.label}}
-      .eo-flex.col.a-stretch.col-right.row-1.row-span-3
-        h3.uc.my-3
-          v-icon(:size="40" :left="true") history
-          | Experience
-        .eo-flex.wrap(v-for="exp in resume.experience" :key="exp.company")
-          .heading.uc.flex-shrink-1.ma-0 {{ exp.company }}
-          .dates.eo-flex.j-end.ra.flex-grow-1.flex-shrink-1 {{formatDate(exp.start)}}&nbsp;-&nbsp;{{formatDate(exp.end)}}
-          .subtitle.bold.caps.ma-0.full-width {{ exp.position  }}
-          p.mt-1.full-width.block {{exp.desc}}
-        h3.uc.my-3.group
-          v-icon(:size="40" :left="true") school
-          | Education
-        div(v-for="edu in resume.education" :key="edu.orginization")
-          .heading.uc.ma-0 {{ edu.orginization }}
-          .subtitle.bold.caps {{edu.category}}
-          p.mt-1.full-width.block {{edu.desc}}
+section.resume.my-5
+  .obtions.mb3.eo-flex.a-center.j-end.dont-print
+    my-link.ml-2.mb-2(
+      :hide-text='true',
+      icon='mdi-file-pdf-box',
+      href='./ErikOlsen_Resume_nuxt.pdf',
+      text='View Pdf'
+    )
+    my-link.ml-2.mb-2(
+      :hide-text='true',
+      icon='mdi-download',
+      href='./ErikOlsen_Resume_nuxt.pdf',
+      text='Download',
+      download
+    )
+  v-divider.my2
+  .document.css-grid-2
+    .top-block.eo-flex.j-center.a-center.col-left.row-1.row-span-1.pt-3
+      .ma-4
+        headshot-svg.headshot
+      span.content
+        .uc.ma-0
+          .fname {{ resume.fname }}
+          .lname {{ resume.lname }}
+        .jobtitle.uc.mt-2 {{ resume.title }}
+    .eo-flex.pa-0.col.a-stretch.col-left.row-2.row-span-1
+      .skill.pl-4.eo-flex.rel(
+        v-for='(rating, name) in resume.skills',
+        :key='name',
+        :title='"Experience Level: " + rating'
+      )
+        .name.my-2.flex-grow-1.all-caps {{ name }}
+        client-only(placeholder='Loading...')
+          star-rating(
+            :rating='rating',
+            rtl,
+            read-only,
+            :increment='0.25',
+            :star-size='20',
+            :show-rating='false'
+          )
+    .contact-info.pl-4.eo-flex.col.a-stretch.col-left.row-3.row-span-1
+      h3.uc Get in Touch
+      .css-grid-2.content
+        .row-1.col-left mobile
+        a.row-1.col-right.block.unstyle(:href='resume.mobile.url') {{ resume.mobile.label }}
+        .row-2.col-left email
+        a.row-2.col-right.block.unstyle(:href='resume.email.url') {{ resume.email.label }}
+        .row-3.col-left website
+        a.row-3.col-right.block.unstyle(:href='resume.website.url') {{ resume.website.label }}
+        .row-4.col-left linkedin
+        a.row-4.col-right.block.unstyle(:href='resume.linkedin.url') {{ resume.linkedin.label }}
+    .eo-flex.col.a-stretch.col-right.row-1.row-span-3
+      h3.uc.my-3
+        v-icon(:size='40', :left='true') history
+        | Experience
+      .eo-flex.wrap(v-for='exp in resume.experience', :key='exp.company')
+        .heading.uc.flex-shrink-1.ma-0 {{ exp.company }}
+        .dates.eo-flex.j-end.ra.flex-grow-1.flex-shrink-1 {{ formatDate(exp.start) }}&nbsp;-&nbsp;{{ formatDate(exp.end) }}
+        .subtitle.bold.caps.ma-0.full-width {{ exp.position }}
+        p.mt-1.full-width.block {{ exp.desc }}
+      h3.uc.my-3.group
+        v-icon(:size='40', :left='true') school
+        | Education
+      div(v-for='edu in resume.education', :key='edu.orginization')
+        .heading.uc.ma-0 {{ edu.orginization }}
+        .subtitle.bold.caps {{ edu.category }}
+        p.mt-1.full-width.block {{ edu.desc }}
 </template>
 
 <script>
@@ -52,11 +74,19 @@ import { format, parseISO } from 'date-fns'
 export default {
   head() {
     return {
+      title: `EO Portfolio | ${this.meta.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.meta.desc
+        }
+      ],
       link: [
         {
           rel: 'stylesheet',
           href:
-            'https://fonts.googleapis.com/css2?family=Open+Sans||Fjalla+One&display=swap'
+            'https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans&display=swap'
         }
       ]
     }
@@ -69,6 +99,7 @@ export default {
   },
   data() {
     return {
+      meta: { title: '', desc: '' },
       page: null,
       pages: this.$store.state.siteInfo.pages,
       resume: this.$store.state.siteInfo.resume
@@ -77,13 +108,16 @@ export default {
   transition: 'slide-down',
   computed: {},
   async fetch() {
-    const slug = this.$route.params.slug || 'index'
-    this.page = await this.$content(slug)
+    this.page = await this.$content('resume')
       .fetch()
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.log({ err, statusCode: 404, message: 'Page not found' })
       })
+    this.meta = {
+      title: this.page.title,
+      desc: this.page.description
+    }
   },
   methods: {
     formatDate: (str) =>

@@ -10,8 +10,24 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: `EO Portfolio | ${this.meta.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.meta.description
+        }
+      ]
+    }
+  },
   data() {
     return {
+      meta: {
+        title: '',
+        desc: ''
+      },
       page: null,
       pages: this.$store.state.cmsData.pages
     }
@@ -24,6 +40,8 @@ export default {
         // eslint-disable-next-line no-console
         console.log({ err, statusCode: 404, message: 'Page not found' })
       })
+    this.meta.title = this.page.title
+    this.meta.desc = this.page.description
   }
 }
 </script>
