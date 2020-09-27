@@ -54,6 +54,7 @@ export default {
       statusMsg: null
     }
   },
+  // eslint-disable-next-line no-console
   watch: { statusMsg: (message) => console.log(message) },
   methods: {
     calculateProgress() {
