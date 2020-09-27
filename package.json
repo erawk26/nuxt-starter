@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-apollo-vuetify-starter",
+  "name": "nuxt-vuetify-starter",
   "version": "1.0.0",
-  "description": "A Nuxt Apollo Template w/ Vuetify",
+  "description": "A Nuxt Site Template w/ Vuetify",
   "author": "Erik Olsen",
   "private": true,
   "scripts": {
