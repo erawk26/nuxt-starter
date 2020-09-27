@@ -37,7 +37,7 @@
 .bdr {
   border: $bdr;
 }
-
+.underline{text-decoration: underline;}
 //layout debugging (dev only)
 .ul {
   @include marding();
