@@ -8,12 +8,11 @@ section.project(:class='$route.params.slug || "index"')
     v-layout.project-container.max-pg-width.row.wrap.project--full(
       v-if='$route.path !== "/projects"'
     )
-      project-full(v-if='project', :projects='projects', :project='project')
+      project-full(v-if='project&&projects' :projects='projects' :project='project')
         template(slot='below-body')
           nuxt-content(:document='project')
       .full-width.ca
         v-pagination(
-          v-if="projects.length"
           @input='paginationChange',
           :value='index + 1',
           total-visible='5',
