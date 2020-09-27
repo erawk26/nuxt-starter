@@ -23,7 +23,7 @@ Vue.mixin({
       }
     },
     getMediaBind(data, i) {
-      if (i === undefined) {
+      if (typeof i === 'undefined') {
         i = 0
       }
       const media = data.media[i]

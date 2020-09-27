@@ -8,7 +8,7 @@ nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(
       ripple,
       :elevation='hover ? 5 : 10'
     )
-      media(v-if='project.media', v-bind='getMediaBind(project,0)')
+      media(v-if='project.media', v-bind='getMediaBind(project)')
       .content.la.uc.full-width
         div {{ project.title }}
         small {{ project.client }}
