@@ -13,6 +13,7 @@ section.project(:class='$route.params.slug || "index"')
           nuxt-content(:document='project')
       .full-width.ca
         v-pagination(
+          v-if="projects.length"
           @input='paginationChange',
           :value='index + 1',
           total-visible='5',
