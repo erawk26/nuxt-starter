@@ -1,7 +1,8 @@
 ---
 title: Nuxt Portfolio
 client: Erik the Developer
-date: '2020-06-01'
+description: I've re-built my portfolio countless times to experiment with new technologies. This most recent iteration is done with Nuxt. Its been a lot of fun to build in! The contact form is sending through AWS lambda which lets me host the rest of the site through Github/Netlify and leverage their continuous integration server side rendering. Pretty cool.
+date: '2020-09-25'
 media:
   -
     type: img
@@ -34,4 +35,4 @@ links:
     text: GitHub Repo
     icon: mdi-github
 ---
-I've re-built my portfolio countless times to experiment with new technologies. This most recent iteration is done with Nuxt. Its been a lot of fun to build in! The contact form is sending through AWS lambda which lets me host the rest of the site through Github/Netlify and leverage their continuous integration server side rendering. Pretty cool.
+

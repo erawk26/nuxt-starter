@@ -1,6 +1,7 @@
 ---
 title: Drupal 8 Site Build
 client: Community Barn Ventures
+description: I coded the Client Landing Page, Individual Pages, sliders, client blocks, and Testimonials. The LP has a client grid that leverages CSS Grid and jQuery. I wrote some JS to arrange the bigger clients into predefined spaces then fills the smaller clients in around them, without any unwanted spaces. Its also completely responsive and will rearrange the grid based on screen size.
 date: '2017-03-01'
 media:
   -
@@ -22,4 +23,4 @@ links:
     text: Codepen Example
     icon: mdi-codepen
 ---
-I coded the Client Landing Page, Individual Pages, sliders, client blocks, and Testimonials. The LP has a client grid that leverages CSS Grid and jQuery. I wrote some JS to arrange the bigger clients into predefined spaces then fills the smaller clients in around them, without any unwanted spaces. Its also completely responsive and will rearrange the grid based on screen size.
+
