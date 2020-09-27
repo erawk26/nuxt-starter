@@ -1,16 +1,22 @@
 <template lang="pug">
-  nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(:to="'/projects/'+project.slug" :class="$vuetify.breakpoint.smAndUp?'seven-five':'square'")
-    article
-      v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
-        media(v-if="project.media" v-bind="getMediaBind(project,0)")
-        .content.la.uc.full-width
-          div {{project.title}}
-          small {{project.client}}
-      v-card.card-back.abs-center(ripple :elevation="hover?5:10")
-        .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
-          h3 {{project.title}}
-          .skill-wrap
-            span(v-for="(skill, i) in project.skills") {{skill}}
+nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(
+  :to='"/projects/" + project.slug',
+  :class='$vuetify.breakpoint.smAndUp ? "seven-five" : "square"'
+)
+  article
+    v-card.card-front.abs-center.eo-flex.col.center(
+      ripple,
+      :elevation='hover ? 5 : 10'
+    )
+      media(v-if='project.media', v-bind='getMediaBind(project,0)')
+      .content.la.uc.full-width
+        div {{ project.title }}
+        small {{ project.client }}
+    v-card.card-back.abs-center(ripple, :elevation='hover ? 5 : 10')
+      .content.eo-flex.col.fill.dk-green.la.pa-5.full-height
+        subheading.mt-0.underline Skills:
+        ul.skill-wrap.unstyle.eo-flex.col.wrap.full-height
+          li.ma-1(v-for='(skill, i) in project.skills') {{ skill }}
 </template>
 <script>
 import { gsap } from 'gsap'
@@ -99,8 +105,16 @@ export default {
       height: 100%;
     }
   }
-  .card-back .content {
-    height: 100%;
+  .card-back {
+    .content {
+      .subheading {
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+      > ul {
+        flex: 1;
+      }
+    }
   }
 }
 .skill-wrap {
