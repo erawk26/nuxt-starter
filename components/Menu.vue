@@ -11,7 +11,7 @@
       .full-width.d-flex.flex-column.align-center(v-else-if="type == 'mobile'" active='')
         v-icon.d-block {{item.icon}}
         span {{item.title}}
-      // DROPDOWN MENU HERE  
+      // DROPDOWN MENU HERE
       v-list-group.flex-grow-1(v-else :prepend-icon="item.icon" :append-icon="!item.submenu?'':'expand_more'")
         template(v-slot:activator)
           v-list-item-content()
@@ -61,8 +61,6 @@ export default {
   margin-left: 0;
   margin-right: 0;
 }
-</style>
-<style lang="scss">
 .v-list-item.nav-item .v-list-item__title {
   line-height: 1;
   font-size: 1.8rem;
