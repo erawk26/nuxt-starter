@@ -3,7 +3,7 @@ section.intro.d-flex.flex-column.align-center.justify-center
   v-avatar.headshot(:size='$vuetify.breakpoint.xsOnly ? "150px" : "210px"')
     v-img.img-circle.elevation-4.mb-1(
       :src='require("~/assets/img/" + page.headshot)',
-      lazy-src='http://via.placeholder.com/500x500',
+      lazy-src='//via.placeholder.com/500x500',
       title='Erik Olsen',
       alt='Erik Olsen'
     )
