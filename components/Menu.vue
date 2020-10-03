@@ -97,7 +97,7 @@ export default {
   }
 }
 .v-list-item.nav-item,
-.v-list-dense .v-list-item.nav-item {
+.v-list--dense .v-list-item.nav-item {
   .v-list-item__title {
     line-height: 1;
     font-size: 1.8rem;
