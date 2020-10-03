@@ -18,7 +18,8 @@ section.intro.d-flex.flex-column.align-center.justify-center
       v-icon(large) expand_more
     my-menu.nav-social.menu--social.d-flex.justify-space-between.text-center(
       :menu='cardMenu',
-      :hide-text='true'
+      hide-text,
+      type='flat'
     )
 </template>
 
