@@ -1,6 +1,6 @@
 <template lang="pug">
 section.project(:class='$route.params.slug || "index"')
-  v-container(grid-list-lg='', v-if='project')
+  v-container(grid-list-lg='', v-if='typeof project !=="undefined"')
     v-breadcrumbs.pl-0(:items='crumbs')
       template(v-slot:divider='')
         v-icon mdi-chevron-right
