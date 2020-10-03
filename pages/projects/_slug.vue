@@ -1,14 +1,18 @@
 <template lang="pug">
 section.project(:class='$route.params.slug || "index"')
-  v-container(grid-list-lg='', v-if='typeof project !=="undefined"')
+  v-container(grid-list-lg='', v-if='typeof project !== "undefined"')
     v-breadcrumbs.pl-0(:items='crumbs')
       template(v-slot:divider='')
         v-icon mdi-chevron-right
     // full template
     v-layout.project-container.max-pg-width.row.wrap.project--full(
-      v-if='$route.path !== "/projects"'
+      v-if='$route.params.slug'
     )
-      project-full(v-if='project&&projects' :projects='projects' :project='project')
+      project-full(
+        v-if='project && projects',
+        :projects='projects',
+        :project='project'
+      )
         template(slot='below-body')
           nuxt-content(:document='project')
       .full-width.ca
