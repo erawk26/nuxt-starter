@@ -4,7 +4,7 @@ v-container.cards(grid-list-lg='')
     template(v-slot:divider='')
       v-icon mdi-chevron-right
   v-layout.row.wrap
-    h1.mt-0.full-width(v-if='$route.path !== "/skills"') Skill: {{ tag }}
+    h1.mt-0.full-width(v-if='$route.params.slug') Skill: {{ tag }}
     .skills.mt-2.full-width(v-else-if='page', lg12)
       h1.mt-0.full-width {{ page.title }}
       multiselect#skills-options.skills-options(
