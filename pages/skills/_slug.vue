@@ -39,6 +39,7 @@ v-container.cards(grid-list-lg='')
 
 <script>
 import 'vue-multiselect/dist/vue-multiselect.min.css'
+import Multiselect from 'vue-multiselect'
 export default {
   head() {
     return {
@@ -55,7 +56,7 @@ export default {
     }
   },
   components: {
-    Multiselect: () => import('vue-multiselect'),
+    Multiselect,
     ProjectTeaser: () => import('@/components/ProjectTeaser')
   },
   data() {
