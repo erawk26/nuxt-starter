@@ -86,12 +86,12 @@ export default {
       {
         text: 'Home',
         disabled: false,
-        href: '/'
+        to: '/'
       },
       {
         text: 'Projects',
         disabled: false,
-        href: '/projects'
+        to: '/projects'
       },
       {
         text: slug === 'index' ? 'All' : project.client,

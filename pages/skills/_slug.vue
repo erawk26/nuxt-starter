@@ -89,12 +89,12 @@ export default {
       {
         text: 'Home',
         disabled: false,
-        href: '/'
+        to: '/'
       },
       {
         text: 'Skills',
         disabled: false,
-        href: '/skills'
+        to: '/skills'
       },
       {
         text: !slug ? 'By Skill' : this.tag,
