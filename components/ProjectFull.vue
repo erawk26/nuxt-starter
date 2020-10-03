@@ -26,7 +26,7 @@
               | &#32;ago
             slot(name="below-body")
           .cell.omega.eo-flex.wrap.skills.mt-2(v-if="project.skills")
-              small.full-width Skills:
+              nuxt-link.full-width.mb-2(to="/skills") Skills:
               v-chip.mr-1.mb-1(small :to="'/skills/'+ kebab(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
 
 </template>

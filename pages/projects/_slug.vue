@@ -85,19 +85,22 @@ export default {
     const crumbs = [
       {
         text: 'Home',
-        disabled: false,
         to: '/'
       },
       {
+        exact: true,
+        link: true,
         text: 'Projects',
-        disabled: false,
-        to: '/projects'
-      },
-      {
-        text: slug === 'index' ? 'All' : project.client,
-        disabled: true
+        to: '/projects/'
       }
     ]
+    if (slug !== 'index') {
+      crumbs.push({
+        text: project.client,
+        exact: true,
+        link: true
+      })
+    }
     const meta = {
       title: project.title,
       desc: project.description

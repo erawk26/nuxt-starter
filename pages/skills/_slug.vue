@@ -89,19 +89,22 @@ export default {
     this.crumbs = [
       {
         text: 'Home',
-        disabled: false,
         to: '/'
       },
       {
-        text: 'Skills',
-        disabled: false,
-        to: '/skills'
-      },
-      {
-        text: !slug ? 'By Skill' : this.tag,
-        disabled: true
+        exact: true,
+        link: true,
+        text: slug ? 'Skills' : 'By Skill',
+        to: '/skills/'
       }
     ]
+    if (slug) {
+      this.crumbs.push({
+        text: this.tag,
+        exact: true,
+        link: true
+      })
+    }
   },
   methods: {
     getSelectedNames() {
