@@ -56,7 +56,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .v-list-item__action.no-text {
   margin-left: 0;
   margin-right: 0;
