@@ -4,7 +4,7 @@
       .cell.flex-grow.copy
         theme-btn.mr-3
         sub &copy; 2015 - {{ year }}. {{ companyName }}
-      .cell.ml-3(v-if="!$vuetify.breakpoint.xsAndDown")
+      .cell.ml-3(v-if="$vuetify.breakpoint.smAndUp")
         my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" hide-text type="flat")
 </template>
 

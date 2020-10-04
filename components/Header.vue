@@ -42,17 +42,26 @@ export default {
 .fixed {
   position: fixed;
   // z-index: 100;
+  aside {
+    padding: 5px 0;
+    border-radius: 0.5rem;
+  }
+  .nav-main {
+    padding: 0;
+  }
   .nav-footer {
-    padding: 0 12px 0 22px;
+    padding: 0 8px;
     font-size: 8em;
     justify-content: center;
     a.nav-item.v-list-item--link {
-      padding: 0 7px;
+      padding: 0 6px;
       justify-content: center;
       flex: 0;
       .v-list-item__action.no-text {
         margin: 0;
         text-align: center;
+        display: flex;
+        justify-content: center;
       }
       .v-icon {
         font-size: 18px;
