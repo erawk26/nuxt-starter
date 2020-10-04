@@ -8,6 +8,7 @@
           type='mobile',
           :menu='$store.state.menus.main'
         )
+        v-divider.mx-3
         my-menu.nav-footer.menu--footer.d-flex.justify-start(
           :menu='$store.state.menus.footer.slice(1)',
           hide-text,
