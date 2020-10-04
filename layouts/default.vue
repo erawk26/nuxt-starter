@@ -1,12 +1,12 @@
 <template lang="pug">
-  v-app
-    v-app-bar.dont-print(app)
-      component(is="Header")
-    .main-layout.css-grid-2
-      v-content.full-width.px-5.row-1.row-span-1.col-full
-        .max-pg-width
-          nuxt.component-content
-      component(is="Footer").row-2.row-span-1.col-full.dont-print
+v-app
+  v-app-bar.z-index-100.dont-print(app)
+    component(is='Header')
+  .main-layout.css-grid-2
+    v-content.full-width.px-5.row-1.row-span-1.col-full
+      .max-pg-width
+        nuxt.component-content
+    component.row-2.row-span-1.col-full.dont-print(is='Footer')
 </template>
 
 <script>
@@ -57,6 +57,9 @@ export default {
   // }
   height: 100%;
   overflow: hidden;
+}
+.z-index-100 {
+  z-index: 100;
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;

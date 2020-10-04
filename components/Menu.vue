@@ -8,7 +8,8 @@ v-list(:dense='true', :color='color')
     link,
     :nuxt='!item.external',
     :target='item.external ? "_blank" : "_self"',
-    :title='item.title'
+    :title='item.title',
+    :class='{ "full-width": type == "mobile" }'
   )
     //FLAT MENU HERE
     template(v-if='type == "flat"')
@@ -21,11 +22,8 @@ v-list(:dense='true', :color='color')
       )
         v-list-item-title {{ item.title }}
     // MOBILE VIEW HERE
-    .full-width.d-flex.flex-column.align-center(
-      v-else-if='type == "mobile"',
-      active=''
-    )
-      v-icon.d-block {{ item.icon }}
+    .eo-flex.a-center(v-else-if='type == "mobile"')
+      v-icon.mr-4 {{ item.icon }}
       span {{ item.title }}
     // DROPDOWN MENU HERE
     v-list-group.flex-grow-1(
