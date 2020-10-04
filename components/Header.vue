@@ -1,6 +1,6 @@
 <template lang="pug">
 .max-pg-width.full-width
-  .mobile-only(v-if='$vuetify.breakpoint.smAndDown')
+  .mobile-only(v-if='!$vuetify.breakpoint.smAndUp')
     v-icon.toggle-menu(@click='drawer = !drawer') mdi-menu
     .fixed
       v-navigation-drawer(v-model='drawer')
@@ -15,7 +15,7 @@
         )
   my-menu.nav-main.menu--main.eo-flex.inline.a-start.j-start(
     type='flat',
-    v-if='!$vuetify.breakpoint.smAndDown',
+    v-if='$vuetify.breakpoint.smAndUp',
     :menu='$store.state.menus.main',
     hide-icon
   )
