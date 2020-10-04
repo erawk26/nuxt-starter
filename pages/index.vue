@@ -10,7 +10,8 @@ section.intro.d-flex.flex-column.align-center.justify-center
   v-card.px-5.mx-5.center-text.avatar-padding(
     :color='"blue-grey " + $vuetify.theme.dark ? "darken-5" : "lighten-5"',
     elevation='6',
-    :max-width='400',
+    max-width='100%',
+    width='400',
     :min-width='200'
   )
     nuxt-content(:document='page')
@@ -76,7 +77,9 @@ section.intro {
     margin-right: 0.25em;
   }
   .nav-social a {
-    flex: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
     i {
       // color: $charcoal;
     }
