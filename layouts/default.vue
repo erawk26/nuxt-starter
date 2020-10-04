@@ -59,7 +59,7 @@ export default {
   overflow: hidden;
 }
 .z-index-100 {
-  z-index: 100;
+  z-index: 100 !important;
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;
