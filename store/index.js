@@ -15,12 +15,13 @@ export const state = () => ({
       },
       {
         external: false,
+        icon: 'mdi-briefcase',
         title: 'Projects',
         to: '/projects'
       },
       {
         external: false,
-        icon: 'home',
+        icon: 'mdi-email-outline',
         title: 'Contact',
         to: '/contact'
       },
