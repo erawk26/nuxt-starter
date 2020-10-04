@@ -139,6 +139,9 @@ section.resume {
     > .col-right {
       padding-right: 2rem;
     }
+    @media (max-width: $bp-xs - 1) {
+      font-size: 0.815em;
+    }
   }
   $rBodyText: 'Open Sans', sans-serif;
   $rHeadingText: 'Fjalla One', sans-serif;
@@ -173,6 +176,9 @@ section.resume {
 
   .heading {
     font-size: 2.4rem;
+    @media (max-width: $bp-xs - 1) {
+      font-size: 2rem;
+    }
     letter-spacing: 0;
     line-height: 1;
   }
@@ -231,6 +237,9 @@ section.resume {
     padding-right: 11rem;
     .name {
       font-size: 2.4rem;
+      @media (max-width: $bp-xs - 1) {
+        font-size: 2rem;
+      }
     }
     &:last-child {
       border-bottom: 1px solid #ccc;
@@ -259,7 +268,11 @@ section.resume {
       .col-right.row-1 {
         order: 1;
       }
-      .col-left {
+      .top-block {
+        border-bottom: 1px solid #ccc;
+      }
+      > .col-left {
+        border-right: none;
         &.row-1 {
           order: 0;
         }
