@@ -2,7 +2,7 @@
 .max-pg-width.full-width
   .mobile-only(v-if='!$vuetify.breakpoint.smAndUp')
     v-icon.toggle-menu(@click='drawer = !drawer') mdi-menu
-    .fixed
+    .fixed(:class='{ active: drawer }')
       v-navigation-drawer(v-model='drawer')
         my-menu.nav-main.menu--main.eo-flex.col.inline.a-start.j-start(
           type='mobile',
@@ -42,6 +42,10 @@ export default {
 <style lang="scss">
 .fixed {
   position: fixed;
+  max-height: 0;
+  &.active {
+    max-height: 100vh;
+  }
   // z-index: 100;
   aside {
     padding: 5px 0;
