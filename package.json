@@ -17,6 +17,7 @@
     "date-fns": "^2.14.0",
     "gsap": "^3.2.6",
     "lodash.debounce": "^4.0.8",
+    "lru-cache": "^6.0.0",
     "nuxt": "^2.14.6",
     "vue-multiselect": "^2.1.6",
     "vue-star-rating": "^1.6.1",
