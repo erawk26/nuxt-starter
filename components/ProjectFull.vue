@@ -1,7 +1,7 @@
 <template lang="pug">
     v-container
-      v-card
-        media(v-if="project.media.length===1" v-bind="getMediaBind(project)")
+      v-card(v-if="project.title")
+        media(v-if="project.media && project.media.length===1" v-bind="getMediaBind(project)")
         v-carousel(v-else-if="project.media.length>1" height="auto" hide-delimiter-background show-arrows-on-hover @change="onCarouselChange")
           v-carousel-item(v-for='(item, i) in project.media', tag="div" :key='i')
             v-sheet(height='100%')
