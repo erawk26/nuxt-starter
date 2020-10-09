@@ -2,10 +2,7 @@ export default {
   icons: {
     iconfont: 'md' // default - only for display purposes
   },
-  defaultAssets: {
-    font: true,
-    icons: 'md'
-  },
+  defaultAssets: false,
   theme: {
     dark: false,
     themes: {
