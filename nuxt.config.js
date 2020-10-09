@@ -2,7 +2,7 @@ export default {
   /*
    ** Headers of the page
    */
-  // mode: 'universal',
+  mode: 'universal',
   head: {
     title: `EO Portfolio | ${process.env.npm_package_name || ''}`,
     meta: [

@@ -1,8 +1,3 @@
-import LRU from 'lru-cache'
-const themeCache = new LRU({
-  max: 10,
-  maxAge: 1000 * 60 * 60 // 1 hour
-})
 export default {
   icons: {
     iconfont: 'md' // default - only for display purposes
@@ -11,7 +6,6 @@ export default {
   treeShake: true,
   theme: {
     dark: false,
-    options: { themeCache },
     themes: {
       dark: {
         // primary: '#263238',
