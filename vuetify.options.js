@@ -3,14 +3,13 @@ export default {
     iconfont: 'md' // default - only for display purposes
   },
   defaultAssets: false,
-  treeShake: true,
   theme: {
     dark: false,
     themes: {
       dark: {
         // primary: '#263238',
         // primary: '#342a21',
-        primary: '#04b55c'
+        primary: '#3b8070'
         // accent: '#C67171',
         // secondary: '#26A5B5',
         // success: '#4CAF50',

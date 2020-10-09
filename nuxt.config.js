@@ -1,6 +1,6 @@
 export default {
   /*
-   ** Headers of the page
+   ** Headers of the  page
    */
   mode: 'universal',
   head: {
