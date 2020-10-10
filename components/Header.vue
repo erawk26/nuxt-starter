@@ -1,5 +1,5 @@
 <template lang="pug">
-.max-pg-width.full-width(v-if="!loading")
+.max-pg-width.full-width
   .mobile-only(v-show='!$vuetify.breakpoint.smAndUp')
     v-icon.toggle-menu(@click='drawer = !drawer')
      | mdi-menu
