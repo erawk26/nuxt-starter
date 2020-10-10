@@ -53,15 +53,7 @@ export default {
   content: {
     // Options
   },
-  generate: {
-    async routes() {
-      const { $content } = require('@nuxt/content')
-      const files = await $content({ deep: true })
-        .only(['path'])
-        .fetch()
-      return files.map((file) => (file.path === '/index' ? '/' : file.path))
-    }
-  },
+  generate: {},
   build: {
     extend: (config) => {
       const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
